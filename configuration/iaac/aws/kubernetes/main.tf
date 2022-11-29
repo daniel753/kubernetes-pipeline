@@ -31,17 +31,14 @@ provider "kubernetes" {
 module "in28minutes-cluster" {
   source          = "terraform-aws-modules/eks/aws"
   cluster_name    = "in28minutes-cluster"
-  cluster_version = "1.14"
-  vpc_config {
-    subnet_ids = ["subnet-0dc362f01746e33fc", "subnet-017c136d5f8f51054"]
-  }
-  #subnets         = ["subnet-0dc362f01746e33fc", "subnet-017c136d5f8f51054"] #CHANGE
+  cluster_version = "1.22"
+  subnet_ids         = ["subnet-0dc362f01746e33fc", "subnet-017c136d5f8f51054"] #CHANGE
   #subnets = data.aws_subnet_ids.subnets.ids
   vpc_id          = aws_default_vpc.default.id
 
   #vpc_id         = "vpc-1234556abcdef"
 
-  node_groups = [
+  eks_managed_node_groups = [
     {
       instance_type = "t2.micro"
       max_capacity  = 5

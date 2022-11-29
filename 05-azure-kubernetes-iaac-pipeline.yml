@@ -45,10 +45,11 @@ steps:
     command: 'destroy'
     workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/azure/kubernetes'
     environmentServiceName: 'azure-resource-manager-connection'
+    commandOptions: 'lock=false'
     allowTelemetryCollection: false
 
-- task: TerraformCLI@0
-  inputs:
-    command: 'forceunlock'
-    lockID: 'force-unlock -force 92630d49-dbde-6d04-94bc-8668bb3f6a33'
+# - task: TerraformCLI@0
+#   inputs:
+#     command: 'forceunlock'
+#     lockID: 'force-unlock -force 92630d49-dbde-6d04-94bc-8668bb3f6a33'
 

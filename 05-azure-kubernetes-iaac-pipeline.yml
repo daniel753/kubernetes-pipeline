@@ -15,20 +15,20 @@ steps:
     
     
 
-# - task: TerraformCLI@0
-#   inputs:
-#     command: 'init'
-#     workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/azure/kubernetes'
-#     # commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
-#     backendType: 'azurerm'
-#     backendServiceArm: 'azure-resource-manager-connection'
-#     ensureBackend: true
-#     backendAzureRmResourceGroupName: 'terraform-backend-rg'
-#     backendAzureRmResourceGroupLocation: 'westeurope'
-#     backendAzureRmStorageAccountName: 'storageaccountdanita753'
-#     backendAzureRmContainerName: 'storageaccountdanita753container'
-#     backendAzureRmKey: 'kubernetes-dev.tfstate'
-#     allowTelemetryCollection: false
+- task: TerraformCLI@0
+  inputs:
+    command: 'init'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/azure/kubernetes'
+    # commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
+    backendType: 'azurerm'
+    backendServiceArm: 'azure-resource-manager-connection'
+    ensureBackend: true
+    backendAzureRmResourceGroupName: 'terraform-backend-rg'
+    backendAzureRmResourceGroupLocation: 'westeurope'
+    backendAzureRmStorageAccountName: 'storageaccountdanita753'
+    backendAzureRmContainerName: 'storageaccountdanita753container'
+    backendAzureRmKey: 'kubernetes-dev.tfstate'
+    allowTelemetryCollection: false
     
 # - task: TerraformCLI@0
 #   inputs:
@@ -38,10 +38,7 @@ steps:
 #     commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
 #     allowTelemetryCollection: false
 
-# - task: TerraformCLI@0
-#   inputs:
-#     command: 'forceunlock'
-#     lockID: 'force-unlock -force 92630d49-dbde-6d04-94bc-8668bb3f6a33'
+
 
 - task: TerraformCLI@0
   inputs:
@@ -50,5 +47,8 @@ steps:
     environmentServiceName: 'azure-resource-manager-connection'
     allowTelemetryCollection: false
 
-
+- task: TerraformCLI@0
+  inputs:
+    command: 'forceunlock'
+    lockID: 'force-unlock -force 92630d49-dbde-6d04-94bc-8668bb3f6a33'
 
